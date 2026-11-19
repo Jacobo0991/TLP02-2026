@@ -13,7 +13,7 @@ La Fase 1 implementa el analizador léxico en [lexer.py](lexer.py).
 ### Cómo ejecutarlo
 
 ```bash
-python lexer.py pruebas/valido_basico.cpp
+python lexer.py pruebas/lexer/valido_basico.cpp
 ```
 
 Imprime una tabla alineada con las columnas `Tipo | Lexema | Línea | Col` y,
@@ -94,3 +94,39 @@ Los 25 tests de [test_lexer.py](test_lexer.py) cubren:
   uno de los 10 errores léxicos.
 - [docs/especificacion_tokens.md](docs/especificacion_tokens.md) — la
   especificación, única fuente de verdad.
+
+## Analizador semántico — Fase 3
+
+La Fase 3 está implementada en [semantico.py](semantico.py), basada en
+[tabla_simbolos.py](tabla_simbolos.py), **sin modificar `lexer.py`**.
+
+Comprueba declaraciones antes de uso, redeclaraciones por ámbito, compatibilidad
+de tipos y gestión de ámbitos; incluye comprobaciones adicionales de funciones,
+`struct`, punteros, alias de tipos y operaciones frecuentes de C++ competitivo.
+
+### Prueba rápida
+
+```bash
+python semantico.py pruebas/semantico/valido.cpp --tabla
+python semantico.py pruebas/semantico/errores_semanticos.cpp
+python semantico.py pruebas/semantico/valido.cpp --json
+python -m pytest -v
+```
+
+### Uso desde Python
+
+```python
+from semantico import analizar
+
+resultado = analizar('int x = 3; x = "hola";')
+for error in resultado.errores:
+    print(error)
+# Error semántico [...]: asignación incompatible: 'const char*' a 'int'
+```
+
+**Importante:** se usa un lector/agrupador de sentencias, no un parser C++
+completo. La biblioteca estándar precargada y las plantillas se soportan como
+un subconjunto de reglas, no como todo C++.
+
+Consulta [docs/analizador_semantico.md](docs/analizador_semantico.md)
+para arquitectura, reglas, API, limitaciones y ejemplos completos.
