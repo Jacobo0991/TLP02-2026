@@ -1,6 +1,6 @@
 # Proyecto de Teoría de Lenguajes
 
-##Integrantes
+## Integrantes
 Mejía Oliva, David Ernesto.
 Nativí Claude, Luís Alejandro.
 Osegueda Hernández, Graciela María. 
