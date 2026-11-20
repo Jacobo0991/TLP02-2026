@@ -6,6 +6,8 @@ subconjunto de C++ orientado a programación competitiva.
 La especificación completa de tokens está en
 [docs/especificacion_tokens.md](docs/especificacion_tokens.md).
 
+[Enlace al video](https://ucaedusv-my.sharepoint.com/:v:/g/personal/00087022_uca_edu_sv/IQBtFSWluIBSR6J_OcBQ33USAdyeNjl2MpOg58hy-b0JYw4?e=0phBrP)
+
 ## Lexer
 
 La Fase 1 implementa el analizador léxico en [lexer.py](lexer.py).
