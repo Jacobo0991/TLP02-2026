@@ -1,0 +1,173 @@
+# Errores cualitativos — Fase 2
+
+## Parser — rechazos equivocados y errores de etiquetado
+
+- **N3-05 [FN]**: `Ana mira al niño con el libro.`
+  - mensajes del parser: ["Error semántico [col 5]: 'mirar' es transitivo y requiere un objeto directo"]
+
+## spaCy — errores UPOS por oración
+
+- **N3-07**: `El perro de Ana y Luis come.`
+  - perro: NOUN→PROPN · come: VERB→PROPN
+- **N3-08**: `Ana come y Luis bebe.`
+  - come: VERB→PROPN · bebe: VERB→PROPN
+- **N3-19**: `Manzana compra Sofía.`
+  - Manzana: NOUN→PROPN · compra: VERB→NOUN
+- **N1-03**: `Pedro nadó.`
+  - nadó: VERB→PROPN
+- **N1-06**: `Correremos.`
+  - Correremos: VERB→PROPN
+- **N1-16**: `El perro negras corre.`
+  - perro: NOUN→PROPN
+- **N2-02**: `El perro negro pequeño corrió.`
+  - perro: NOUN→PROPN
+- **N2-11**: `Sofía compra manzanas y flores.`
+  - compra: VERB→PROPN
+- **N2-19**: `Perros comen pan.`
+  - Perros: NOUN→PROPN
+- **N3-02**: `Hoy María cocina manzanas.`
+  - cocina: VERB→PROPN
+- **N3-03**: `Pan come Ana.`
+  - Pan: NOUN→PROPN
+- **N3-09**: `Ana no siempre come pan.`
+  - no: ADV→PART
+
+## HuggingFace — errores UPOS por oración
+
+- **N3-02**: `Hoy María cocina manzanas.`
+  - Hoy: ADV→NOUN · María: PROPN→DET · cocina: VERB→NOUN · manzanas: NOUN→PROPN · .: PUNCT→SYM
+- **N3-11**: `Ana, Luis y Sofía son alta, alto y alta, respectivamente.`
+  - ,: PUNCT→CCONJ · alta: ADJ→NOUN · ,: PUNCT→CCONJ · ,: PUNCT→PRON · .: PUNCT→CCONJ
+- **N1-07**: `Yo vivo aquí.`
+  - Yo: PRON→PROPN · vivo: VERB→ADJ · aquí: ADV→PRON · .: PUNCT→SYM
+- **N1-14**: `La casa está nueva.`
+  - La: DET→PROPN · casa: NOUN→PRON · nueva: ADJ→NOUN · .: PUNCT→NOUN
+- **N2-04**: `El libro de María será nuevo.`
+  - El: DET→PRON · libro: NOUN→DET · nuevo: ADJ→PRON · .: PUNCT→DET
+- **N2-10**: `María, Carlos y Pedro aprendieron.`
+  - María: PROPN→NOUN · ,: PUNCT→CCONJ · Carlos: PROPN→NOUN · .: PUNCT→SYM
+- **N2-19**: `Perros comen pan.`
+  - Perros: NOUN→PROPN · comen: VERB→PROPN · pan: NOUN→PROPN · .: PUNCT→ADJ
+- **N3-01**: `Ayer Ana comió pan.`
+  - Ayer: ADV→PROPN · comió: VERB→PROPN · pan: NOUN→PROPN · .: PUNCT→PROPN
+- **N3-07**: `El perro de Ana y Luis come.`
+  - El: DET→PROPN · perro: NOUN→PRON · come: VERB→PROPN · .: PUNCT→ADJ
+- **N3-15**: `¿Ana come pan?`
+  - ¿: PUNCT→SCONJ · come: VERB→PROPN · pan: NOUN→PROPN · ?: PUNCT→ADV
+- **N1-02**: `Luis compró manzanas.`
+  - Luis: PROPN→PRON · manzanas: NOUN→NUM · .: PUNCT→SYM
+- **N1-04**: `María es feliz.`
+  - María: PROPN→PRON · feliz: ADJ→PRON · .: PUNCT→SYM
+- **N1-11**: `Tú miraste los árboles.`
+  - Tú: PRON→VERB · árboles: NOUN→PRON · .: PUNCT→SYM
+- **N1-15**: `Beberemos pronto.`
+  - Beberemos: VERB→PROPN · pronto: ADV→PRON · .: PUNCT→SYM
+- **N1-16**: `El perro negras corre.`
+  - El: DET→PROPN · corre: VERB→ADJ · .: PUNCT→ADJ
+- **N1-18**: `Ana comen pan.`
+  - comen: VERB→PROPN · pan: NOUN→PROPN · .: PUNCT→NOUN
+- **N1-19**: `Los niños come.`
+  - Los: DET→PROPN · niños: NOUN→PROPN · .: PUNCT→ADP
+- **N1-20**: `La casa es blanco.`
+  - La: DET→PROPN · casa: NOUN→PRON · .: PUNCT→SYM
+- **N2-01**: `El bonito jardín es verde.`
+  - El: DET→PROPN · bonito: ADJ→PROPN · .: PUNCT→SYM
+- **N2-02**: `El perro negro pequeño corrió.`
+  - El: DET→PROPN · corrió: VERB→ADJ · .: PUNCT→SYM
+- **N2-03**: `María será muy inteligente.`
+  - María: PROPN→PRON · muy: ADV→ADJ · .: PUNCT→SYM
+- **N2-05**: `La casa del profesor será grande.`
+  - La: DET→PROPN · del: ADP→DET · .: PUNCT→CCONJ
+- **N2-11**: `Sofía compra manzanas y flores.`
+  - compra: VERB→ADP · manzanas: NOUN→NUM · .: PUNCT→CCONJ
+- **N2-12**: `Ana pinta casas, mesas y ventanas.`
+  - Ana: PROPN→PRON · ,: PUNCT→CCONJ · .: PUNCT→ADJ
+- **N2-16**: `Pedro camina al casa.`
+  - camina: VERB→PROPN · casa: NOUN→PRON · .: PUNCT→NOUN
+- **N2-17**: `Ana corre manzanas.`
+  - corre: VERB→ADP · manzanas: NOUN→NUM · .: PUNCT→SYM
+- **N3-08**: `Ana come y Luis bebe.`
+  - come: VERB→PROPN · bebe: VERB→PROPN · .: PUNCT→SYM
+- **N3-09**: `Ana no siempre come pan.`
+  - no: ADV→PART · siempre: ADV→PRON · .: PUNCT→SYM
+- **N3-10**: `Ana come pan muy rápidamente.`
+  - pan: NOUN→PROPN · rápidamente: ADV→ADJ · .: PUNCT→SYM
+- **N3-12**: `El perro que corre es negro.`
+  - El: DET→PROPN · perro: NOUN→PRON · .: PUNCT→SYM
+- **N3-16**: `Las manzanas fueron compradas por Ana.`
+  - Las: DET→NUM · manzanas: NOUN→NUM · .: PUNCT→SYM
+- **N3-19**: `Manzana compra Sofía.`
+  - Manzana: NOUN→PROPN · compra: VERB→ADP · .: PUNCT→SYM
+- **N3-20**: `La casa de María y Carlos será grande.`
+  - La: DET→PROPN · grande: ADJ→DET · .: PUNCT→ADJ
+- **N1-03**: `Pedro nadó.`
+  - nadó: VERB→PROPN · .: PUNCT→ADJ
+- **N1-06**: `Correremos.`
+  - Correremos: VERB→PROPN · .: PUNCT→ADJ
+- **N1-08**: `Carlos comió una manzana.`
+  - Carlos: PROPN→ADV · .: PUNCT→CCONJ
+- **N1-09**: `Ella abrirá la ventana.`
+  - Ella: PRON→VERB · .: PUNCT→SYM
+- **N1-10**: `Yo escribí cartas.`
+  - Yo: PRON→PROPN · .: PUNCT→SYM
+- **N1-12**: `Los niños saltarán.`
+  - niños: NOUN→PRON · .: PUNCT→ADV
+- **N1-13**: `Pedro fue inteligente.`
+  - fue: AUX→PROPN · .: PUNCT→SYM
+- **N1-17**: `Un casa es blanca.`
+  - casa: NOUN→PRON · .: PUNCT→SYM
+- **N2-06**: `Pedro camina al parque.`
+  - camina: VERB→PROPN · .: PUNCT→NOUN
+- **N2-08**: `Los niños cocinaron aquí ayer bien.`
+  - niños: NOUN→PRON · .: PUNCT→SYM
+- **N2-09**: `Ana y Luis serán altos.`
+  - altos: ADJ→NUM · .: PUNCT→CCONJ
+- **N2-14**: `Carlos siempre bebe.`
+  - siempre: ADV→PRON · .: PUNCT→ADJ
+- **N2-18**: `Ana camina con yo.`
+  - camina: VERB→PROPN · .: PUNCT→SYM
+- **N3-03**: `Pan come Ana.`
+  - Pan: NOUN→PRON · .: PUNCT→SYM
+- **N3-05**: `Ana mira al niño con el libro.`
+  - niño: NOUN→PRON · .: PUNCT→NOUN
+- **N3-06**: `Ana compró libros de María.`
+  - libros: NOUN→DET · .: PUNCT→ADJ
+- **N1-01**: `Ana come el pan.`
+  - .: PUNCT→SYM
+- **N1-05**: `Sofía será una profesora.`
+  - .: PUNCT→CCONJ
+- **N2-07**: `Ana trabajó en la escuela ayer.`
+  - .: PUNCT→SYM
+- **N2-13**: `Pedro no lava el coche.`
+  - .: PUNCT→SYM
+- **N2-20**: `Ana comerá ayer.`
+  - .: PUNCT→ADV
+- **N3-04**: `El libro sobre la mesa es nuevo.`
+  - El: DET→PROPN
+- **N3-13**: `Ana lo come.`
+  - .: PUNCT→ADJ
+- **N3-14**: `Ana ha comido pan.`
+  - .: PUNCT→ADJ
+- **N3-17**: `Sofía abrió la ventana con la flor.`
+  - .: PUNCT→ADV
+- **N3-18**: `Pedro escribió cartas de Ana.`
+  - .: PUNCT→ADJ
+
+## llm-few_shot — aceptación
+
+- **N2-06 [etiquetado]**: `Pedro camina al parque.`
+- **N2-10 [etiquetado]**: `María, Carlos y Pedro aprendieron.`
+- **N3-05 [FN]**: `Ana mira al niño con el libro.`
+- **N3-06 [etiquetado]**: `Ana compró libros de María.`
+
+## llm-zero_shot — aceptación
+
+- **N2-04 [etiquetado]**: `El libro de María será nuevo.`
+- **N2-05 [etiquetado]**: `La casa del profesor será grande.`
+- **N2-06 [etiquetado]**: `Pedro camina al parque.`
+- **N2-07 [etiquetado]**: `Ana trabajó en la escuela ayer.`
+- **N2-15 [etiquetado]**: `Ana y yo caminaremos con él`
+- **N3-05 [FN]**: `Ana mira al niño con el libro.`
+- **N3-06 [etiquetado]**: `Ana compró libros de María.`
+- **N3-17 [etiquetado]**: `Sofía abrió la ventana con la flor.`
+- **N3-18 [etiquetado]**: `Pedro escribió cartas de Ana.`

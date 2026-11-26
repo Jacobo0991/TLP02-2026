@@ -1,0 +1,27 @@
+Exactitud UPOS por nivel y sistema
+nivel,parser,spacy,hf,llm-few_shot,llm-zero_shot
+1,1.0000,0.9647,0.4118,0.0000,0.0000
+2,1.0000,0.9739,0.5739,0.0000,0.0000
+3,1.0000,0.9313,0.5878,0.0000,0.0000
+total,1.0000,0.9547,0.5378,0.0000,0.0000
+
+UAS y LAS por nivel
+nivel,parser_UAS,parser_LAS,parser_n,spacy_UAS,spacy_LAS,spacy_n
+1,1.0000,1.0000,15,0.9516,0.7097,15
+2,1.0000,1.0000,15,0.9570,0.8065,15
+3,1.0000,1.0000,4,1.0000,0.8214,4
+total,1.0000,1.0000,34,0.9617,0.7760,34
+
+Aceptación (parser y LLM)
+sistema,VP,FP,FN,VN,precision,cobertura,rechazo_correcto,errores_etiquetado
+parser,33,0,1,26,1.0000,0.9706,1.0000,0
+llm-few_shot,33,0,1,26,1.0000,0.9706,1.0000,3
+llm-zero_shot,33,0,1,26,1.0000,0.9706,1.0000,8
+
+Costo: tiempo promedio por oración y tamaño del modelo
+sistema,tiempo_prom_s,tamano_MB
+parser,0.000000,0.04
+spacy,0.002980,601.99
+hf,0.018846,962.74
+llm-few_shot,0.000000,0.00
+llm-zero_shot,0.000000,0.00

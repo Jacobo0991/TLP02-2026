@@ -1,0 +1,21 @@
+Métrica,zero_shot,few_shot
+Precisión,1.0000,1.0000
+Cobertura,0.9706,0.9706
+Rechazo correcto,1.0000,1.0000
+VP,33,33
+FP,0,0
+FN,1,1
+VN,26,26
+errores_etiquetado,8,3
+
+Formato inválido (%),0.0,0.0
+Consistencia (%),0.9166666666666666,1.0
+Desviación español (%),0.0,0.0
+R12 (%),1.0,0.75
+
+Costo
+,tokens_in,tokens_out,costo_usd,latencia_s
+zero_shot,394617,242173,0.160548,6.1467
+few_shot,576237,170472,0.142860,4.4537
+
+McNemar,b=0,c=0,p=1.0000,trivial

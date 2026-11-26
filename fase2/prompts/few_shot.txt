@@ -1,0 +1,102 @@
+Eres un analizador sintáctico. Analiza la oración usando EXCLUSIVAMENTE la gramática,
+el léxico y las reglas que siguen, aunque la oración te parezca correcta o incorrecta en
+español. No uses tu conocimiento general del idioma.
+
+## Gramática (ε = cadena vacía; los símbolos en mayúsculas del léxico son terminales)
+R1  O        → SUJ SV FIN | SV FIN
+R2  FIN      → PUNTO | ε
+R3  SUJ      → SN
+R4  SN       → SNS COORD
+R5  COORD    → LISTA CONJ SNS | ε
+R6  LISTA    → COMA SNS LISTA | ε
+R7  SNS      → DET NOMINAL | NPROP | PRON | NUCLEO_N
+R8  NOMINAL  → ADJ NUCLEO_N | NUCLEO_N
+R9  NUCLEO_N → SUST ADJS COMP_N
+R10 ADJS     → SADJ ADJS | ε
+R11 SADJ     → INTENS ADJ | ADJ
+R12 COMP_N   → SP_DE | ε      (si después del sustantivo viene PREP_DE o CONTR_DE, elige SP_DE)
+R13 SP_DE    → PREP_DE SNS | CONTR_DE NOMINAL
+R14 SV       → MOD_PRE NEG_OPC PRED CCS
+R15 MOD_PRE  → SADV | ε
+R16 NEG_OPC  → NEG | ε
+R17 PRED     → VERBO OD_OPC | COP ATRIB
+R18 OD_OPC   → OD | ε
+R19 OD       → SN
+R20 ATRIB    → SADJ | SN
+R21 CCS      → CC CCS | ε
+R22 CC       → SADV | SP
+R23 SP       → PREP SNS | PREP_DE SNS | CONTR_A NOMINAL | CONTR_DE NOMINAL
+R24 SADV     → ADV
+
+## Léxico (cada palabra tiene una sola categoría; una palabra que no esté aquí es un
+## rechazo léxico)
+DET: el, la, los, las, un, una, unos, unas
+SUST (m): perro(s), gato(s), niño(s), libro(s), parque(s), árbol/árboles, coche(s),
+          pan/panes, profesor/profesores, jardín/jardines
+SUST (f): casa(s), niña(s), manzana(s), mesa(s), ciudad/ciudades, escuela(s), flor/flores,
+          carta(s), profesora(s), ventana(s)
+NPROP: Ana, María, Sofía (f); Luis, Pedro, Carlos (m)
+PRON: yo, tú, él, ella, nosotros, nosotras, ellos, ellas
+ADJ: alto, bajo, rojo, negro, blanco, pequeño, nuevo, viejo, bonito, rápido (con -o, -a,
+     -os, -as); grande(s), feliz/felices, inteligente(s), verde(s), azul/azules, joven/jóvenes
+INTENS: muy, bastante
+ADV: ayer, pronto, hoy, siempre, nunca, rápidamente, lentamente, bien, mal, aquí, allí
+NEG: no
+PREP: a, en, con, por, para, sobre, desde, hacia, sin
+PREP_DE: de        CONTR_A: al        CONTR_DE: del
+CONJ: y, o         COMA: ,            PUNTO: .
+VERBO: solo las formas regulares de presente, pretérito y futuro (yo, tú, él/ella,
+       nosotros, ellos) de: comprar, mirar, lavar, abrir (transitivos); comer, beber,
+       aprender, escribir, cocinar, pintar (con o sin objeto); correr, caminar, vivir,
+       saltar, trabajar, nadar (intransitivos)
+COP: soy, eres, es, somos, son, fui, fuiste, fue, fuimos, fueron, seré, serás, será,
+     seremos, serán, estoy, estás, está, estamos, están, estuve, estuviste, estuvo,
+     estuvimos, estuvieron, estaré, estarás, estará, estaremos, estarán
+
+## Reglas semánticas (se aplican solo si la oración pasa la gramática)
+C1 Dentro del SN, DET y ADJ concuerdan en género y número con el SUST.
+C2 "al" y "del" solo van con masculino singular; "a el" y "de el" deben contraerse.
+C3 El verbo concuerda con el sujeto en persona y número (un SN coordinado es plural;
+   1.ª persona si incluye a "yo" o "nosotros").
+C4 El atributo concuerda con el sujeto: en género y número si es SADJ, en número si es SN
+   (coordinado: masculino si algún miembro es masculino).
+C5 Los verbos intransitivos no llevan OD; los transitivos lo necesitan.
+C6 Los pronombres no son OD; "yo" y "tú" no van después de preposición.
+C7 Un sujeto con sustantivo común necesita determinante.
+C8 "ayer" exige pretérito; "pronto" exige futuro.
+
+## Formato del árbol
+Nodos visibles: O, SUJ, SN, SV, OD, ATRIB, CC, SP, SADJ, SADV y hojas (CATEGORIA palabra).
+No escribas FIN, COORD, LISTA, SNS, NOMINAL, NUCLEO_N, ADJS, COMP_N, MOD_PRE, NEG_OPC,
+PRED, OD_OPC ni CCS: sus hijos van directamente en el nodo padre. SP_DE se escribe SP.
+Un SN coordinado es un SN con cada miembro como SN hijo. Todo en una sola línea.
+
+## Respuesta
+Responde SOLO con un objeto JSON, sin texto adicional:
+{"aceptada": true|false,
+ "etapa": "lexico"|"sintactico"|"semantico"|null,
+ "mensajes": ["motivo del rechazo, citando la regla (R1-R24 o C1-C8)"],
+ "categorias": ["una categoría por palabra"],
+ "arbol": "(O ...)" o null}
+
+## Ejemplos
+
+Oración: Un gato pequeño saltó.
+{"aceptada": true, "etapa": null, "mensajes": [], "categorias": ["DET", "SUST", "ADJ", "VERBO", "PUNTO"], "arbol": "(O (SUJ (SN (DET Un) (SUST gato) (SADJ (ADJ pequeño)))) (SV (VERBO saltó)) (PUNTO .))"}
+
+Oración: Nosotros lavamos los coches rápidamente.
+{"aceptada": true, "etapa": null, "mensajes": [], "categorias": ["PRON", "VERBO", "DET", "SUST", "ADV", "PUNTO"], "arbol": "(O (SUJ (SN (PRON Nosotros))) (SV (VERBO lavamos) (OD (SN (DET los) (SUST coches))) (CC (SADV (ADV rápidamente)))) (PUNTO .))"}
+
+Oración: El profesor cocinó pan con una flor.
+{"aceptada": true, "etapa": null, "mensajes": [], "categorias": ["DET", "SUST", "VERBO", "SUST", "PREP", "DET", "SUST", "PUNTO"], "arbol": "(O (SUJ (SN (DET El) (SUST profesor))) (SV (VERBO cocinó) (OD (SN (SUST pan))) (CC (SP (PREP con) (SN (DET una) (SUST flor))))) (PUNTO .))"}
+
+Oración: Los árboles del jardín son verdes.
+{"aceptada": true, "etapa": null, "mensajes": [], "categorias": ["DET", "SUST", "CONTR_DE", "SUST", "COP", "ADJ", "PUNTO"], "arbol": "(O (SUJ (SN (DET Los) (SUST árboles) (SP (CONTR_DE del) (SN (SUST jardín))))) (SV (COP son) (ATRIB (SADJ (ADJ verdes)))) (PUNTO .))"}
+
+Oración: Un gato come y un perro bebe.
+{"aceptada": false, "etapa": "sintactico", "mensajes": ["Error sintáctico: tras el PUNTO/EOF esperado al final de la oración apareció CONJ 'y'. La gramática solo coordina sintagmas nominales (R4-R5), no oraciones."], "categorias": ["DET", "SUST", "VERBO", "CONJ", "DET", "SUST", "VERBO", "PUNTO"], "arbol": null}
+
+Oración: El perro camina a el parque.
+{"aceptada": false, "etapa": "semantico", "mensajes": ["Error semántico: la secuencia 'a el' debe contraerse en 'al' (regla C2)."], "categorias": ["DET", "SUST", "VERBO", "PREP", "DET", "SUST", "PUNTO"], "arbol": null}
+
+Oración: {ORACION}

@@ -1,0 +1,8 @@
+nltk
+matplotlib
+pytest
+spacy>=3.7,<3.9
+transformers>=4.40
+torch
+huggingface_hub
+anthropic>=0.40

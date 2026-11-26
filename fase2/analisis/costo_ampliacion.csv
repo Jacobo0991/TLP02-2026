@@ -1,0 +1,6 @@
+enfoque,formas_lexico,reglas_cfg,tamano_modelo_MB,tokens_prompt_prom,notas
+CFG (parser),400,24,-,-,ampliar = anadir forma al lexico o regla a la gramatica
+spaCy (es_core_news_lg),-,-,602.0,-,ampliar = anadir datos y reentrenar; peso en disco
+HF (mrm8488/RuPERTa-base-finetuned-pos),-,-,962.7,-,ampliar = fine-tuning; peso en disco
+LLM (zero_shot),-,-,-,2192.3,ampliar = reescribir el prompt; llamadas=180
+LLM (few_shot),-,-,-,3201.3,ampliar = reescribir el prompt; llamadas=180

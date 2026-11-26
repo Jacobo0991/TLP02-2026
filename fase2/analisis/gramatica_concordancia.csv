@@ -1,0 +1,25 @@
+regla,produccion,categoria,copias
+R1,O -> SUJ SV FIN | SV FIN,sv_24,24
+R2,FIN -> PUNTO | eps,intacta,1
+R3,SUJ -> SN,nominal_4,4
+R4,SN -> SNS COORD,nominal_4,4
+R5,COORD -> LISTA CONJ SNS | eps,nominal_4,4
+R6,LISTA -> COMA SNS LISTA | eps,nominal_4,4
+R7,SNS -> DET NOMINAL | NPROP | PRON | NUCLEO_N,nominal_4,4
+R8,NOMINAL -> ADJ NUCLEO_N | NUCLEO_N,nominal_4,4
+R9,NUCLEO_N -> SUST ADJS COMP_N,nominal_4,4
+R10,ADJS -> SADJ ADJS | eps,nominal_4,4
+R11,SADJ -> INTENS ADJ | ADJ,nominal_4,4
+R12,COMP_N -> SP_DE | eps,nominal_4,4
+R13,SP_DE -> PREP_DE SNS | CONTR_DE NOMINAL,nominal_4,4
+R14,SV -> MOD_PRE NEG_OPC PRED CCS,sv_6,6
+R15,MOD_PRE -> SADV | eps,intacta,1
+R16,NEG_OPC -> NEG | eps,intacta,1
+R17,PRED -> VERBO OD_OPC | COP ATRIB,sv_24,24
+R18,OD_OPC -> OD | eps,nominal_4,4
+R19,OD -> SN,nominal_4,4
+R20,ATRIB -> SADJ | SN,atrib_4,4
+R21,CCS -> CC CCS | eps,intacta,1
+R22,CC -> SADV | SP,intacta,1
+R23,SP -> PREP SNS | PREP_DE SNS | CONTR_A NOMINAL | CONTR_DE NOMINAL,nominal_4,4
+R24,SADV -> ADV,intacta,1

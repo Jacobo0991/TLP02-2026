@@ -1,0 +1,5 @@
+tipo,n,parser_aceptacion_pct,parser_rechazo_lexico,parser_rechazo_sintactico,parser_rechazo_semantico,parser_upos_pct,spacy_upos_pct,hf_upos_pct,llm_upos_pct,llm_aceptacion_pct
+sin_tildes,5,0.0,3,0,2,45.0,80.0,75.0,DATO FALTANTE,DATO FALTANTE
+mayusculas,5,100.0,0,0,0,100.0,57.1,42.9,DATO FALTANTE,DATO FALTANTE
+palabra_oov,5,0.0,5,0,0,37.9,100.0,82.8,DATO FALTANTE,DATO FALTANTE
+total,15,33.3,8,0,2,58.6,81.4,68.6,DATO FALTANTE,DATO FALTANTE

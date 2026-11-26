@@ -1,0 +1,44 @@
+id,fuente,n_tokens,mediana_s,mediana_ms,oracion
+N1-01,set,5,1.0899966582655907e-05,0.010899966582655907,Ana come el pan.
+N1-02,set,4,9.09995287656784e-06,0.00909995287656784,Luis compró manzanas.
+N1-03,set,3,6.300047971308231e-06,0.006300047971308231,Pedro nadó.
+N1-04,set,4,8.600065484642982e-06,0.008600065484642982,María es feliz.
+N1-05,set,5,1.0599964298307896e-05,0.010599964298307896,Sofía será una profesora.
+N1-06,set,2,4.09991480410099e-06,0.00409991480410099,Correremos.
+N1-07,set,4,8.699949830770493e-06,0.008699949830770493,Yo vivo aquí.
+N1-08,set,5,1.0599964298307896e-05,0.010599964298307896,Carlos comió una manzana.
+N1-09,set,5,1.0500079952180386e-05,0.010500079952180386,Ella abrirá la ventana.
+N1-10,set,4,8.899951353669167e-06,0.008899951353669167,Yo escribí cartas.
+N1-11,set,5,1.0699965059757233e-05,0.010699965059757233,Tú miraste los árboles.
+N1-12,set,4,8.200062438845634e-06,0.008200062438845634,Los niños saltarán.
+N1-13,set,4,8.70006624609232e-06,0.00870006624609232,Pedro fue inteligente.
+N1-14,set,5,1.0399962775409222e-05,0.010399962775409222,La casa está nueva.
+N1-15,set,3,6.3999323174357414e-06,0.006399932317435741,Beberemos pronto.
+N2-01,set,6,1.1800089851021767e-05,0.011800089851021767,El bonito jardín es verde.
+N2-02,set,6,1.2399978004395962e-05,0.012399978004395962,El perro negro pequeño corrió.
+N2-03,set,5,9.300070814788342e-06,0.009300070814788342,María será muy inteligente.
+N2-04,set,7,1.2899981811642647e-05,0.012899981811642647,El libro de María será nuevo.
+N2-05,set,7,1.2899981811642647e-05,0.012899981811642647,La casa del profesor será grande.
+N2-06,set,5,9.999959729611874e-06,0.009999959729611874,Pedro camina al parque.
+N2-07,set,7,1.3399985618889332e-05,0.013399985618889332,Ana trabajó en la escuela ayer.
+N2-08,set,7,1.3399985618889332e-05,0.013399985618889332,Los niños cocinaron aquí ayer bien.
+N2-09,set,6,1.100008375942707e-05,0.01100008375942707,Ana y Luis serán altos.
+N2-10,set,7,1.1599971912801266e-05,0.011599971912801266,"María, Carlos y Pedro aprendieron."
+N2-11,set,6,1.1699972674250603e-05,0.011699972674250603,Sofía compra manzanas y flores.
+N2-12,set,8,1.4099990949034691e-05,0.01409999094903469,"Ana pinta casas, mesas y ventanas."
+N2-13,set,6,1.0500079952180386e-05,0.010500079952180386,Pedro no lava el coche.
+N2-14,set,4,7.300055585801601e-06,0.007300055585801601,Carlos siempre bebe.
+N2-15,set,6,1.2199976481497288e-05,0.012199976481497288,Ana y yo caminaremos con él
+N3-05,set,8,1.4900113455951214e-05,0.014900113455951214,Ana mira al niño con el libro.
+N3-06,set,6,1.1400086805224419e-05,0.011400086805224419,Ana compró libros de María.
+N3-17,set,8,1.4599994756281376e-05,0.014599994756281376,Sofía abrió la ventana con la flor.
+N3-18,set,6,1.1599971912801266e-05,0.011599971912801266,Pedro escribió cartas de Ana.
+coord-2,coordinacion,6,1.1299969628453255e-05,0.011299969628453255,Ana y Luis comen manzanas.
+coord-4,coordinacion,10,1.5700003132224083e-05,0.015700003132224083,"Ana, Luis, Pedro y Carlos comen manzanas."
+coord-8,coordinacion,16,1.5099998563528061e-05,0.015099998563528061,"Ana, Luis, Pedro, Carlos, Maria, Sofia, Ana y Luis comen manzanas."
+coord-16,coordinacion,30,2.680008765310049e-05,0.02680008765310049,"Ana, Luis, Pedro, Carlos, Maria, Sofia, Ana, Luis, Pedro, Carlos, Maria, Sofia, Ana, Luis, Pedro y Carlos comen manzanas."
+de-1,cadena_de,7,7.999944500625134e-06,0.007999944500625134,El libro de la nina es nuevo.
+de-2,cadena_de,10,1.0800082236528397e-05,0.010800082236528397,El libro de la nina de la profesora es nuevo.
+de-4,cadena_de,16,1.6700010746717453e-05,0.016700010746717453,El libro de la nina de la profesora de la casa de la mesa es nuevo.
+de-8,cadena_de,27,2.810009755194187e-05,0.02810009755194187,El libro de la nina de la profesora de la casa de la mesa de la escuela de la flor de la nina de la profesora es nuevo.
+de-16,cadena_de,50,5.070003680884838e-05,0.05070003680884838,El libro de la nina de la profesora de la casa de la mesa de la escuela de la flor de la nina de la profesora de la casa de la mesa de la escuela de la flor de la nina de la profesora de la casa de la mesa es nuevo.
